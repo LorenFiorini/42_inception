@@ -71,3 +71,26 @@ For example, [`lfiorini.42.fr`](http://wil.42.fr/) would redirect to the IP addr
 > Your NGINX container must be the only entrypoint into your infrastructure via the **port 443** only, using the TLSv1.2 or TLSv1.3 protocol.
 > 
 
+
+### Diagram
+
+Diagram of the expected result
+
+![Diagram of the expected result](assets/diagram.png)
+
+
+### Directory Structure
+
+Example of the expected directory structure
+
+![Example of the expected directory structure](assets/directory_structure.png)
+
+
+> For obvious security reasons, any credentials, API keys, env variables etc... must be saved locally in a `.env` file and ignored by git. Publicly stored credentials will lead you directly to a failure of the project.
+> 
+
+
+
+# Sources
+
+[en.subject.pdf](assets/en.subject.pdf)
