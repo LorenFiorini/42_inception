@@ -26,3 +26,6 @@ services:
     container_name: mariadb
     restart: always
 
+volumes:
+  wordpress-db:
+  wordpress-files:
