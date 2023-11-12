@@ -1,59 +1,26 @@
 
 # Subject: You also have to write your own Dockerfiles, one per service. The Dockerfiles must be called in your docker-compose.yml by your Makefile.
 
-# By ChatGPT
 version: '3'
 
 services:
   nginx:
     build:
-      context: ./srcs/nginx
+      context: ./requirements/nginx
     container_name: nginx
     restart: always
-    ports:
-      - "443:443"
-    networks:
-      - mynetwork
-    environment:
-      - NGINX_TLS_VERSION=TLSv1.2 # or TLSv1.3
+
 
   wordpress:
     build:
-      context: ./srcs/wordpress
+      context: ./requirements/wordpress
     container_name: wordpress
     restart: always
-    networks:
-      - mynetwork
-    volumes:
-      - wordpress-db:/var/lib/mysql
-      - wordpress-files:/var/www/html
-    environment:
-      - WORDPRESS_DB_HOST=mariadb
-      - WORDPRESS_DB_USER=user
-      - WORDPRESS_DB_PASSWORD=password
-      - WORDPRESS_DB_NAME=wordpress
+
 
   mariadb:
     build:
-      context: ./srcs/mariadb
+      context: ./requirements/mariadb
     container_name: mariadb
     restart: always
-    networks:
-      - mynetwork
-    volumes:
-      - mariadb-data:/var/lib/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=root_password
-      - MYSQL_DATABASE=wordpress
-      - MYSQL_USER=user
-      - MYSQL_PASSWORD=password
-
-networks:
-  mynetwork:
-    driver: bridge
-
-volumes:
-  wordpress-db:
-  wordpress-files:
-  mariadb-data:
 
