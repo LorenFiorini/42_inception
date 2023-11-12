@@ -178,6 +178,7 @@ If you have not passed ALL the mandatory requirements, your bonus part will not 
 ## Directory Structure
 
 ```
+
 C:\Users\lfiorini
 
 ├── Makefile
@@ -208,6 +209,7 @@ C:\Users\lfiorini
 │                   └── tools
 │                       └── Makefile
 └── .dockerignore
+
 ```
 
 # Solution
