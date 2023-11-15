@@ -1,7 +1,10 @@
 
 # Subject: You also have to write your own Dockerfiles, one per service. The Dockerfiles must be called in your docker-compose.yml by your Makefile.
 
+# If only only the major version is specified (e.g. 3), then Compose will allow minor updates to the major version (e.g. 3.7). Compose will not allow patch releases of the major version (e.g. 3.7.2).
+
 version: '3'
+
 
 services:
   nginx:
