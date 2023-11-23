@@ -14,21 +14,31 @@ services:
     ports:
       - "443:443"
     restart: always
-
+    networks:
+      - frontend
+      - backend
 
   wordpress:
     build:
       context: ./requirements/wordpress
     container_name: wordpress
     restart: always
-
+    networks:
+      - frontend
+      - backend
 
   mariadb:
     build:
       context: ./requirements/mariadb
     container_name: mariadb
     restart: always
+    networks:
+      - backend
 
 volumes:
   wordpress-db:
   wordpress-files:
+
+networks:
+  frontend:
+  backend:
