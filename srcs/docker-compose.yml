@@ -11,6 +11,7 @@ services:
     build:
       context: ./requirements/nginx
     container_name: nginx
+    env_file: .env
     ports:
       - "443:443"
     restart: always
@@ -23,6 +24,7 @@ services:
       context: ./requirements/wordpress
     container_name: wordpress
     restart: always
+    env_file: .env
     networks:
       - frontend
       - backend
@@ -32,6 +34,7 @@ services:
       context: ./requirements/mariadb
     container_name: mariadb
     restart: always
+    env_file: .env
     networks:
       - backend
 
