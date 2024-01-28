@@ -3,7 +3,6 @@
 
 # If only only the major version is specified (e.g. 3), then Compose will allow minor updates to the major version (e.g. 3.7). Compose will not allow patch releases of the major version (e.g. 3.7.2).
 
-
 version:  '3.3'
 
 services:
@@ -18,106 +17,36 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     restart: unless-stopped
-  nginx:
-    container_name: nginx
-    depends_on:
-      - wordpress
-    build: requirements/nginx
-    env_file: .env
-    environment:
-      - BONUS
-    networks:
-      - inception
-    ports:
-      - "443:443"
-    volumes:
-      - wordpress:/var/www/wordpress
-    restart: unless-stopped
-  wordpress:
-    container_name: wordpress
-    depends_on:
-      - mariadb
-    build: requirements/wordpress
-    env_file: .env
-    environment:
-      - BONUS
-    networks:
-      - inception
-    expose:
-      - "9000"
-    volumes:
-      - wordpress:/var/www/wordpress
-    restart: unless-stopped
-
-  # Bonus
-  redis:
-    container_name: redis
-    build:
-      context: bonus/redis
-      args:
-        - REDIS_CACHE
-    profiles:
-      - bonus
-    networks:
-      - inception
-    expose:
-      - "6379"
-    restart: unless-stopped
-  adminer:
-    container_name: adminer
-    build: bonus/adminer
-    profiles:
-      - bonus
-    depends_on:
-      - mariadb
-    networks:
-      - inception
-    expose:
-      - "8080"
-    restart: unless-stopped
-  static:
-    container_name: static
-    build: bonus/static
-    profiles:
-      - bonus
-    networks:
-      - inception
-    expose:
-      - "8081"
-    restart: unless-stopped
-  ftp:
-    container_name: ftp
-    build: bonus/ftp
-    env_file: bns.env
-    profiles:
-      - bonus
-    networks:
-      - inception
-    ports:
-      - "20-21:20-21"
-      - "20000-20050:20000-20050"
-    volumes:
-      - "wordpress:/var/www/wordpress"
-    restart: unless-stopped
-  cadvisor:
-    container_name: cadvisor
-    build: bonus/cadvisor
-    profiles:
-      - bonus
-    networks:
-      - inception
-    expose:
-      - "8082"
-    devices:
-      - /dev/kmsg:/dev/kmsg
-    volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /dev/disk/:/dev/disk:ro
-    privileged: true
-    restart: unless-stopped
+  # nginx:
+  #   container_name: nginx
+  #   depends_on:
+  #     - wordpress
+  #   build: requirements/nginx
+  #   env_file: .env
+  #   environment:
+  #     - BONUS
+  #   networks:
+  #     - inception
+  #   ports:
+  #     - "443:443"
+  #   volumes:
+  #     - wordpress:/var/www/wordpress
+  #   restart: unless-stopped
+  # wordpress:
+  #   container_name: wordpress
+  #   depends_on:
+  #     - mariadb
+  #   build: requirements/wordpress
+  #   env_file: .env
+  #   environment:
+  #     - BONUS
+  #   networks:
+  #     - inception
+  #   expose:
+  #     - "9000"
+  #   volumes:
+  #     - wordpress:/var/www/wordpress
+  #   restart: unless-stopped
 
 volumes:
   wordpress:
@@ -125,13 +54,13 @@ volumes:
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '$PWD/volumes/wordpress'
+      device: '/home/lfiorini/data/wordpress'
   mariadb:
     driver: local
     driver_opts:
       type: 'none'
       o: 'bind'
-      device: '$PWD/volumes/mariadb'
+      device: '/home/lfiorini/data/mariadb'
 
 networks:
   inception:
