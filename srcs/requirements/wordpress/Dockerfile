@@ -19,9 +19,7 @@ RUN apt-get -y install curl php php-fpm php-mysql mariadb-client
 
 
 # Create directory and download WordPress
-RUN mkdir /var/www
 RUN	mkdir -p /var/www
-
 RUN curl -O https://wordpress.org/wordpress-6.4.2.tar.gz && \
     tar -xzvf wordpress-6.4.2.tar.gz -C /var/www && \
     rm wordpress-6.4.2.tar.gz
