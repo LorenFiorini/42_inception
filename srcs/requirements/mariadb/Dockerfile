@@ -15,18 +15,18 @@
 FROM debian:bullseye
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get install mariadb-server -y
+RUN apt-get install mysql mariadb-server -y
 
 COPY ./conf/my-server_2.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN chmod 644 /etc/mysql/mariadb.conf.d/50-server.cnf
 
-COPY ./tools/my-script_1.sh .
-RUN chmod +x my-script_1.sh
+COPY ./tools/my-script_3.sh .
+RUN chmod +x my-script_3.sh
 
-ENTRYPOINT ["./my-script_1.sh"]
+ENTRYPOINT ["./my-script_3.sh"]
 
 # For debugging
-# CMD ["./my-script_1.sh"]
+# CMD ["./my-script_3.sh"]
 
 # COPY ./tools/setup.sh .
 # RUN chmod +x setup.sh

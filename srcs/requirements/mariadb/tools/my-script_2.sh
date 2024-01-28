@@ -1,8 +1,5 @@
 #!/bin/bash
 
-source .env
-echo "Creating database..." # debug
-
 # 1. Start MariaDB service
 service mariadb start
 
