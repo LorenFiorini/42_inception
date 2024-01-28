@@ -35,5 +35,4 @@ WP_ADMIN_PWD=changeme-123
 WP_ADMIN_EMAIL=address1@gmail.com
 
 
-
-BONUS=0
+BONUS=

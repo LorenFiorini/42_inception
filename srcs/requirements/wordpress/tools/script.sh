@@ -45,7 +45,7 @@ elif [ ! -z $BONUS ] && [ ! -f wp-content/object-cache.php ] ; then
 	wp redis enable --allow-root
 fi
 
-sed -i 's/listen = \/run\/php\/php8.2-fpm.sock/listen = 9000/g' /etc/php/8.2/fpm/pool.d/www.conf
-sed -i 's/;clear_env = no/clear_env = no/g' /etc/php/8.2/fpm/pool.d/www.conf
+sed -i 's/listen = \/run\/php\/php8-fpm.sock/listen = 9000/g' /etc/php/8/fpm/pool.d/www.conf
+sed -i 's/;clear_env = no/clear_env = no/g' /etc/php/8/fpm/pool.d/www.conf
 
-/usr/sbin/php-fpm8.2 -F
+/usr/sbin/php-fpm8 -F
