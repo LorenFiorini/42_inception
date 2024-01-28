@@ -1,0 +1,40 @@
+3c3
+< # Check if the database already exists
+---
+> 
+5c5
+<     echo "Database already exists."
+---
+> 	echo "Database already exists."
+7,8c7
+<     # Start MariaDB service
+<     service mariadb start
+---
+> 	service mariadb start
+10,13c9,11
+<     # Create database, user, and grant privileges
+<     echo "CREATE DATABASE IF NOT EXISTS \`$SQL_DB\` ;" | mariadb
+<     echo "CREATE USER IF NOT EXISTS '$SQL_USR'@'%' IDENTIFIED BY '$SQL_PWD' ;" | mariadb
+<     echo "GRANT ALL PRIVILEGES ON \`$SQL_DB\`.* TO '$SQL_USR'@'%' IDENTIFIED BY '$SQL_PWD' ;" | mariadb
+---
+> 	echo "CREATE DATABASE IF NOT EXISTS \`$SQL_DB\` ;" | mariadb
+> 	echo "CREATE USER IF NOT EXISTS '$SQL_USR'@'%' IDENTIFIED BY '$SQL_PWD' ;" | mariadb
+> 	echo "GRANT ALL PRIVILEGES ON \`$SQL_DB\`.* TO '$SQL_USR'@'%' IDENTIFIED BY '$SQL_PWD' ;" | mariadb
+15,17c13,14
+<     sleep 1
+<     # Set root user password and flush privileges
+<     echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$SQL_ROOT_PWD' ; FLUSH PRIVILEGES;" | mariadb
+---
+> 	sleep 1
+> 	echo "ALTER USER 'root'@'localhost' IDENTIFIED BY '$SQL_ROOT_PWD' ; FLUSH PRIVILEGES;" | mariadb
+19,20c16
+<     # Shutdown MySQL server
+<     mysqladmin -u"root" -p"$SQL_ROOT_PWD" shutdown
+---
+> 	mysqladmin -u"root" -p"$SQL_ROOT_PWD" shutdown
+23,24c19
+< # Start MySQL in safe mode with a specific bind address
+< mysqld_safe --bind-address=0.0.0.0
+---
+> mysqld_safe --bind-address=0.0.0.0
+\ No newline at end of file

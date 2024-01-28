@@ -10,35 +10,47 @@
 #                                                                              #
 # **************************************************************************** #
 
+
+MARIADB_VOL		:= /home/lfiorini/data/mariadb
+WORDPRESS_VOL	:= /home/lfiorini/data/wordpress
+
+# Build and start the services
 all:
-	@mkdir -p volumes/mariadb
-	@mkdir -p volumes/wordpress
+	@mkdir -p $(MARIADB_VOL)
+	@mkdir -p $(WORDPRESS_VOL)
 	docker compose -f srcs/docker-compose.yml up -d
 
+# Stop and remove containers, networks, and volumes
 down:
-	docker compose -f srcs/docker-compose.yml 
-# --profile bonus --env-file srcs/bonus.env down -v
+	docker compose -f srcs/docker-compose.yml down -v
 
+# Stop the services
 stop:
-	docker compose -f srcs/docker-compose.yml 
-# --profile bonus --env-file srcs/bonus.env stop
+	docker compose -f srcs/docker-compose.yml stop
 
+# Start the services
 start:
-	docker compose -f srcs/docker-compose.yml 
-# --profile bonus --env-file srcs/bonus.env start
+	docker compose -f srcs/docker-compose.yml start
 
-fclean: down
-	@rm -rf volumes
+
+clean:
+	docker compose -f srcs/docker-compose.yml down -v
 	-docker rmi -f srcs-nginx srcs-mariadb srcs-wordpress  
 	docker system prune -f
-# srcs-ftp srcs-redis srcs-static srcs-cadvisor srcs-adminer
-# docker system prune -f
+
+fclean: down
+	docker stop $(docker ps -qa)
+	docker rm $(docker ps -qa)
+	docker rmi -f $(docker images -qa)
+	docker volume rm $(docker volume ls -q)
+	docker network rm $(docker network ls -q) 2>/dev/null
+
+
+# re: down
+# 	docker compose -f srcs/docker-compose.yml up -d --build
 
 re: down
-	docker compose -f srcs/docker-compose.yml up -d --build
+	docker-compose -f srcs/docker-compose.yml build
+	docker-compose -f srcs/docker-compose.yml up -d
 
-# bonus:
-# 	docker compose -f srcs/docker-compose.yml --profile bonus --env-file srcs/bonus.env up -d
-
-.PHONY: all up down stop fclean re 
-# bonus
+.PHONY: all clean fclean re 
