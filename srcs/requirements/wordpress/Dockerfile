@@ -14,12 +14,21 @@
 
 FROM debian:bullseye
 
-RUN apt update && apt install curl php8.2 php-fpm php-mysql mariadb-client -y
+RUN apt-get update && apt-get upgrade 
+RUN apt-get install curl php php-fpm php-mysql mariadb-client -y
+
+# RUN apt-get install \
+# 	curl && \
+# 	php8 && \
+# 	php-fpm && \
+# 	php-mysql && \
+# 	mariadb-client -y
 
 RUN	mkdir -p /var/www
-RUN	curl -O https://wordpress.org/wordpress-6.4.2.tar.gz \
-	&& tar -xzvf wordpress-6.4.2.tar.gz -C /var/www \
-	&& rm wordpress-6.4.2.tar.gz
+RUN	curl -O https://wordpress.org/wordpress-6.4.2.tar.gz
+RUN tar -xzvf wordpress-6.4.2.tar.gz -C /var/www
+RUN rm wordpress-6.4.2.tar.gz
+
 
 RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
