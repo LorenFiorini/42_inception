@@ -1,13 +1,13 @@
 #!/bin/sh
 
-INTRA="lfiorini"
-SCRIPT_PATH="./install_docker.sh"
+LOGIN_INTRA="lfiorini"
+INSTALL_DOCKER_SCRIPT="./install_docker.sh"
 
 # Add execute permissions to install_docker.sh
-chmod +x "$SCRIPT_PATH"
+chmod +x "$INSTALL_DOCKER_SCRIPT"
 
 # 1. Run the install_docker.sh script
-if sh "$SCRIPT_PATH"; then
+if sh "$INSTALL_DOCKER_SCRIPT"; then
   echo "Docker installation successful."
 else
   echo "Docker installation failed."
@@ -17,7 +17,7 @@ fi
 sudo groupadd docker
 
 # 3. Add user to the docker group
-sudo usermod -aG docker "$INTRA"
+sudo usermod -aG docker "$LOGIN_INTRA"
 
 # 4. Restart VM (assuming it's a Linux VM)
 sudo reboot
