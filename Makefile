@@ -6,7 +6,7 @@
 #    By: lfiorini <lfiorini@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 08:32:57 by lfiorini          #+#    #+#              #
-#    Updated: 2023/11/12 06:18:30 by lfiorini         ###   ########.fr        #
+#    Updated: 2024/01/28 19:30:20 by lfiorini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,29 +21,38 @@ all:
 	docker compose -f srcs/docker-compose.yml up -d
 
 # Stop and remove containers, networks, and volumes
-down:
-	docker compose -f srcs/docker-compose.yml down -v
+#down:
+#	docker compose -f srcs/docker-compose.yml down -v
 
 # Stop the services
-stop:
-	docker compose -f srcs/docker-compose.yml stop
+#stop:
+#	docker compose -f srcs/docker-compose.yml stop
 
 # Start the services
-start:
-	docker compose -f srcs/docker-compose.yml start
+#start:
+#	docker compose -f srcs/docker-compose.yml start
+
+list:
+	docker ps -a
+	@ echo " "
+	docker image ls -a
+	@ echo " "
+	docker network ls
+	@ echo " "
+	docker volume ls
 
 
 clean:
 	docker compose -f srcs/docker-compose.yml down -v
-	-docker rmi -f srcs-nginx srcs-mariadb srcs-wordpress  
+	-docker image rm -f nginx mariadb wordpress
 	docker system prune -f
 
-fclean: down
-	docker stop $(docker ps -qa)
-	docker rm $(docker ps -qa)
-	docker rmi -f $(docker images -qa)
-	docker volume rm $(docker volume ls -q)
-	docker network rm $(docker network ls -q) 2>/dev/null
+fclean:
+	-docker stop $$(docker ps -qa)
+	-docker rm $$(docker ps -qa)
+	-docker image rm -f $$(docker images -qa)
+	-docker network rm $$(docker network ls -q) 
+	-docker volume rm $$(docker volume ls -q) 2>/dev/null
 
 
 # re: down
