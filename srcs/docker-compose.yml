@@ -17,19 +17,19 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     restart: unless-stopped
-  # wordpress:
-  #   container_name: wordpress
-  #   depends_on:
-  #     - mariadb
-  #   build: requirements/wordpress
-  #   env_file: .env
-  #   networks:
-  #     - inception
-  #   expose:
-  #     - "9000"
-  #   volumes:
-  #     - wordpress:/var/www/wordpress
-  #   restart: unless-stopped
+  wordpress:
+    container_name: wordpress
+    depends_on:
+      - mariadb
+    build: requirements/wordpress
+    env_file: .env
+    networks:
+      - inception
+    expose:
+      - "9000"
+    volumes:
+      - wordpress:/var/www/wordpress
+    restart: unless-stopped
   # nginx:
   #   container_name: nginx
   #   depends_on:
@@ -54,12 +54,12 @@ volumes:
       type: 'none'
       o: 'bind'
       device: '/home/lfiorini/data/mariadb'
-  # wordpress:
-  #   driver: local
-  #   driver_opts:
-  #     type: 'none'
-  #     o: 'bind'
-  #     device: '/home/lfiorini/data/wordpress'
+  wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/lfiorini/data/wordpress'
 
 networks:
   inception:

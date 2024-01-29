@@ -6,7 +6,7 @@
 #    By: lfiorini <lfiorini@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 23:25:20 by lfiorini          #+#    #+#              #
-#    Updated: 2023/11/12 07:42:40 by lfiorini         ###   ########.fr        #
+#    Updated: 2024/01/29 03:32:56 by lfiorini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,7 @@
 FROM debian:bullseye
 
 RUN apt-get update && apt-get upgrade -y
-RUN apt-get -y install curl php php-fpm php-mysql mariadb-client
+RUN apt -y install curl php php-fpm php-mysql mariadb-client
 
 
 # Create directory and download WordPress
@@ -33,10 +33,15 @@ RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli
 # Set ownership and permissions
 RUN chown -R root:root /var/www/wordpress
 
+ARG SCRIPT=script_1.sh
 
 # Copy the script and make it executable
-COPY ./tools/script.sh .
-RUN chmod +x script.sh
+COPY ./tools/$SCRIPT .
+RUN chmod +x $SCRIPT
 
 
-ENTRYPOINT ["./script.sh"]
+ENTRYPOINT ["./$SCRIPT"]
+
+
+# docker build -t wordpress --no-cache srcs/requirements/wordpress/
+# docker run -it wordpress:latest

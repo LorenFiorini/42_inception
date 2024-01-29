@@ -1,0 +1,42 @@
+[
+    {
+        "Name": "srcs_inception",
+        "Id": "b44ac02a643011e7e886d0f59274cd85e8e3c8e11b2d5f8d3dee1f5b2ba85789",
+        "Created": "2024-01-29T02:43:32.513558128+01:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.23.0.0/16",
+                    "Gateway": "172.23.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "47bfaa3369346dd757eb6921342cae128e8d9113fa6fde4c9c316b73bd67e577": {
+                "Name": "mariadb",
+                "EndpointID": "af14a7f87297fe4b347386ebc1ff72ec0a4a4ecdbe26c6c07efc37e650cb6e6f",
+                "MacAddress": "02:42:ac:17:00:02",
+                "IPv4Address": "172.23.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {
+            "com.docker.compose.network": "inception",
+            "com.docker.compose.project": "srcs",
+            "com.docker.compose.version": "2.24.2"
+        }
+    }
+]
