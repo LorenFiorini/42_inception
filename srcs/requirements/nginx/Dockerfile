@@ -14,16 +14,27 @@
 
 FROM debian:bullseye
 
-RUN apt-get update
-RUN apt-get install -y nginx
-RUN apt-get install -y openssl
+RUN apt update && apt install nginx openssl -y
 
-# TODO: Run&Copy config ssl things
+RUN mkdir -p /etc/nginx/ssl
+RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
+       -out /etc/nginx/ssl/lfiorini.crt \
+       -keyout /etc/nginx/ssl/lfiorini.key \
+       -subj "/C=DE/ST=Baden-Wuerttemberg/L=Heilbronn/O=42Heilbronn/OU=student/CN=lfiorini.42.fr/"
 
-EXPOSE 443
+RUN mkdir -p /var/run/nginx
+RUN chmod 755 /var/www/html
+RUN chown -R www-data:www-data /var/www/html
 
-# TODO: Copy config file from somewhere
 
-# "-g" to read configuration from "/etc/nginx/nginx.conf"
-# "daemon off;" to run nginx in foreground and print log to stdout
-CMD ["nginx", "-g", "daemon off;"]
+# COPY ./conf/* /etc/nginx/conf.d/bonus/
+# RUN mkdir -p /etc/nginx/conf.d/default \
+#     && mv /etc/nginx/conf.d/bonus/nginx.conf /etc/nginx/conf.d/default/nginx.conf
+
+RUN mkdir -p /etc/nginx/conf.d/default
+# 3 -> 1
+
+COPY ./tools/script.sh .
+RUN chmod +x script.sh
+
+ENTRYPOINT ["./script.sh"]

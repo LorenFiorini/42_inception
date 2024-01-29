@@ -3,45 +3,66 @@
 
 # If only only the major version is specified (e.g. 3), then Compose will allow minor updates to the major version (e.g. 3.7). Compose will not allow patch releases of the major version (e.g. 3.7.2).
 
-version: '3'
-
+version:  '3.3'
 
 services:
-  nginx:
-    build:
-      context: ./requirements/nginx
-    container_name: nginx
-    env_file: .env
-    ports:
-      - "443:443"
-    restart: always
-    networks:
-      - frontend
-      - backend
-
-  wordpress:
-    build:
-      context: ./requirements/wordpress
-    container_name: wordpress
-    restart: always
-    env_file: .env
-    networks:
-      - frontend
-      - backend
-
   mariadb:
-    build:
-      context: ./requirements/mariadb
     container_name: mariadb
-    restart: always
+    build: requirements/mariadb
     env_file: .env
     networks:
-      - backend
+      - inception
+    expose:
+      - "3306"
+    volumes:
+      - mariadb:/var/lib/mysql
+    restart: unless-stopped
+  # nginx:
+  #   container_name: nginx
+  #   depends_on:
+  #     - wordpress
+  #   build: requirements/nginx
+  #   env_file: .env
+  #   environment:
+  #     - BONUS
+  #   networks:
+  #     - inception
+  #   ports:
+  #     - "443:443"
+  #   volumes:
+  #     - wordpress:/var/www/wordpress
+  #   restart: unless-stopped
+  # wordpress:
+  #   container_name: wordpress
+  #   depends_on:
+  #     - mariadb
+  #   build: requirements/wordpress
+  #   env_file: .env
+  #   environment:
+  #     - BONUS
+  #   networks:
+  #     - inception
+  #   expose:
+  #     - "9000"
+  #   volumes:
+  #     - wordpress:/var/www/wordpress
+  #   restart: unless-stopped
 
 volumes:
-  wordpress-db:
-  wordpress-files:
+  wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/lfiorini/data/wordpress'
+  mariadb:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/lfiorini/data/mariadb'
 
 networks:
-  frontend:
-  backend:
+  inception:
+    driver: bridge
+
