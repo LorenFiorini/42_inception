@@ -6,7 +6,7 @@
 #    By: lfiorini <lfiorini@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 08:32:57 by lfiorini          #+#    #+#              #
-#    Updated: 2024/01/29 02:21:19 by lfiorini         ###   ########.fr        #
+#    Updated: 2024/01/29 02:33:23 by lfiorini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,10 +29,14 @@ start:
 	docker compose -f srcs/docker-compose.yml start
 
 ls:
-	docker ps -a
-	docker image ls -a
-	docker network ls
-	docker volume ls
+	@echo "\033[35m> docker ps -a \033[0m"
+	@ docker ps -a
+	@echo "\033[35m> docker image ls -a \033[0m"
+	@ docker image ls -a
+	@echo "\033[35m> docker network ls \033[0m"
+	@ docker network ls
+	@echo "\033[35m> docker volume ls \033[0m"
+	@ docker volume ls
 
 
 clean:
@@ -44,12 +48,17 @@ clean:
 # To-do: if not empty $$... 
 
 fclean:
-	@set -e
-	-docker stop $$(docker ps -qa) 2>/dev/null
-	-docker container rm $$(docker ps -qa) 2>/dev/null
-	-docker image rm -f $$(docker images -qa) 2>/dev/null
-	-docker network rm $$(docker network ls -q) 2>/dev/null
-	-docker volume rm $$(docker volume ls -q) 2>/dev/null
+	@ set -e
+	@echo "\033[33m> docker stop $$(docker ps -qa) \033[0m"
+	@ -docker stop "$$(docker ps -qa)" 2>/dev/null
+	@echo "\033[33m> docker container rm $$(docker ps -qa) \033[0m"
+	@ -docker container rm "$$(docker ps -qa)" 2>/dev/null
+	@echo "\033[33m> docker image rm -f $$(docker images -qa) \033[0m"
+	@ -docker image rm -f "$$(docker images -qa)" 2>/dev/null
+	@echo "\033[33m> docker network rm $$(docker network ls -q) \033[0m"
+	@ -docker network rm "$$(docker network ls -q)" 2>/dev/null
+	@echo "\033[33m> docker volume rm $$(docker volume ls -q) \033[0m"
+	@ -docker volume rm "$$(docker volume ls -q)" 2>/dev/null
 
 
 # re: down
