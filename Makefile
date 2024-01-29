@@ -6,7 +6,7 @@
 #    By: lfiorini <lfiorini@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 08:32:57 by lfiorini          #+#    #+#              #
-#    Updated: 2024/01/29 01:10:17 by lfiorini         ###   ########.fr        #
+#    Updated: 2024/01/29 02:21:19 by lfiorini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,44 +14,41 @@
 MARIADB_VOL		:= /home/lfiorini/data/mariadb
 WORDPRESS_VOL	:= /home/lfiorini/data/wordpress
 
-# Build and start the services
 all:
 	@mkdir -p $(MARIADB_VOL)
 	@mkdir -p $(WORDPRESS_VOL)
 	docker compose -f srcs/docker-compose.yml up -d
 
-# Stop and remove containers, networks, and volumes
-#down:
-#	docker compose -f srcs/docker-compose.yml down -v
+down:
+	docker compose -f srcs/docker-compose.yml down -v
 
-# Stop the services
-#stop:
-#	docker compose -f srcs/docker-compose.yml stop
+stop:
+	docker compose -f srcs/docker-compose.yml stop
 
-# Start the services
-#start:
-#	docker compose -f srcs/docker-compose.yml start
+start:
+	docker compose -f srcs/docker-compose.yml start
 
-list:
+ls:
 	docker ps -a
-	@ echo " "
 	docker image ls -a
-	@ echo " "
 	docker network ls
-	@ echo " "
 	docker volume ls
 
 
 clean:
 	docker compose -f srcs/docker-compose.yml down -v
-	-docker image rm -f nginx mariadb wordpress
-	docker system prune -f
+	-docker image rm -f srcs-nginx srcs-mariadb srcs-wordpress
+# docker system prune -f
+
+
+# To-do: if not empty $$... 
 
 fclean:
-	-docker stop $$(docker ps -qa)
-	-docker rm $$(docker ps -qa)
-	-docker image rm -f $$(docker images -qa)
-	-docker network rm $$(docker network ls -q) 
+	@set -e
+	-docker stop $$(docker ps -qa) 2>/dev/null
+	-docker container rm $$(docker ps -qa) 2>/dev/null
+	-docker image rm -f $$(docker images -qa) 2>/dev/null
+	-docker network rm $$(docker network ls -q) 2>/dev/null
 	-docker volume rm $$(docker volume ls -q) 2>/dev/null
 
 
