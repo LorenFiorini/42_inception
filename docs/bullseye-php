@@ -1,0 +1,67 @@
+     - PCI: acpiphp: Reassign resources on bridge if necessary
+     - PCI: acpiphp: Use pci_assign_unassigned_bridge_resources() only for
+     - PCI: acpiphp: Reassign resources on bridge if necessary
+     - PCI: acpiphp: Use pci_assign_unassigned_bridge_resources() only for
+     - PCI: acpiphp: Reassign resources on bridge if necessary
+     - PCI: acpiphp: Use pci_assign_unassigned_bridge_resources() only for
+     - PCI: acpiphp: Reassign resources on bridge if necessary
+     - PCI: acpiphp: Use pci_assign_unassigned_bridge_resources() only for
+php-guzzlehttp-psr7 (1.7.0-1+deb11u2) bullseye; urgency=medium
+php-nyholm-psr7 (1.3.2-2+deb11u1) bullseye; urgency=medium
+php7.4 (7.4.33-1+deb11u4) bullseye-security; urgency=high
+php7.4 (7.4.33-1+deb11u3) bullseye-security; urgency=high
+   * Update php extension recommends from composer.json
+php-twig (2.14.3-1+deb11u2) bullseye-security; urgency=medium
+php7.4 (7.4.33-1+deb11u1) bullseye-security; urgency=high
+     - Stored XSS via wp-mail.php (post by email)
+     - Sender’s email address is exposed in wp-mail.php
+     - CSRF in wp-trackback.php
+php-evenement |  3.0.1-2.1 | all
+php-cocur-slugify |    4.0.0-2 | source, all
+php-defuse-php-encryption |  2.2.1-1.1 | source, all
+php-dflydev-fig-cookies |  2.0.0-1.1 | source, all
+ php-embed |  3.3.9-1.1 | source, all
+php-fabiang-sasl |    1.0.1-1 | source, all
+php-markdown |  1.8.0-1.1 | source, all
+php-raintpl | 3.1.0+dfsg-1.1 | source, all
+php-react-child-process |    0.6.1-1 | source, all
+php-react-http |    0.8.6-1 | source, all
+php-respect-validation | 1.1.29-2.1 | source, all
+php-robmorgan-phinx |    0.9.2-3 | source, all
+php-ratchet-pawl |  0.3.4-1.1 | all
+php-ratchet-rfc6455 |  0.2.4-2.1 | all
+php-cboden-ratchet |    0.4.2-1 | all
+ratchetphp |    0.4.2-1 | source
+php-react-cache |  0.5.0-1.1 | all
+reactphp-cache |  0.5.0-1.1 | source
+php-react-dns |    1.2.0-1 | all
+reactphp-dns |    1.2.0-1 | source
+php-react-event-loop |  1.0.0-1.1 | all
+reactphp-event-loop |  1.0.0-1.1 | source
+php-react-promise-stream |  1.1.1-3.1 | all
+reactphp-promise-stream |  1.1.1-3.1 | source
+php-react-promise-timer |  1.5.0-2.1 | all
+reactphp-promise-timer |  1.5.0-2.1 | source
+php-react-socket |    1.4.0-1 | all
+reactphp-socket |    1.4.0-1 | source
+php-react-stream |    1.1.0-1 | all
+reactphp-stream |    1.1.0-1 | source
+php7.4 (7.4.30-1+deb11u1) bullseye-security; urgency=high
+   * Checkout ProcessExecutorMock.php needed for updated tests
+php-guzzlehttp-psr7 (1.7.0-1+deb11u1) bullseye; urgency=medium
+php-twig (2.14.3-1+deb11u1) bullseye-security; urgency=high
+phpmyadmin (4:5.0.4+dfsg2-2+deb11u1) bullseye; urgency=medium
+     - CVE-2021-21408: template authors could run restricted static php methods
+     - CVE-2022-29221: template authors could inject php code by choosing a
+libphp-adodb (5.20.19-1+deb11u1) bullseye-security; urgency=high
+php-crypt-gpg (1.6.4-2+deb11u1) bullseye; urgency=high
+php-laravel-framework (6.20.14+dfsg-2+deb11u1) bullseye; urgency=high
+php7.4 (7.4.28-1+deb11u1) bullseye-security; urgency=high
+    + CVE-2021-21708: UAF due to php_filter_float() failing for ints
+php7.4 (7.4.26-1) unstable; urgency=medium
+phpliteadmin (1.9.8.2-1+deb11u1) bullseye; urgency=medium
+php7.4 (7.4.25-1+deb11u1) bullseye-security; urgency=high
+     - [i386] PCI: ibmphp: Fix double unmap of io_mem
+     - [i386] PCI: ibmphp: Fix double unmap of io_mem
+     - [i386] PCI: ibmphp: Fix double unmap of io_mem
+     - [i386] PCI: ibmphp: Fix double unmap of io_mem

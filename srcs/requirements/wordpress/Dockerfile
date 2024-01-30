@@ -36,7 +36,7 @@ RUN chown -R root:root /var/www/wordpress
 ARG SCRIPT=script_1.sh
 
 # Copy the script and make it executable
-COPY ./tools/$SCRIPT .
+COPY ./tools/$SCRIPT /
 RUN chmod +x $SCRIPT
 
 
