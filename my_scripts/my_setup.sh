@@ -21,3 +21,7 @@ sudo usermod -aG docker "$LOGIN_INTRA"
 
 # 4. Restart VM (assuming it's a Linux VM)
 sudo reboot
+
+
+# sudo usermod -aG docker lorenzo
+
