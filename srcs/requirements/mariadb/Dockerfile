@@ -20,13 +20,13 @@ RUN apt install -y mariadb-server
 COPY ./conf/my-server_.conf /etc/mysql/mariadb.conf.d/50-server.cnf
 RUN chmod 644 /etc/mysql/mariadb.conf.d/50-server.cnf
 
-# RUN ls -la /
-ARG SCRIPT=my-script_4.sh
+# ARG SCRIPT=my-script_4.sh
 
-COPY ./tools/SCRIPT /
-RUN chmod +x /SCRIPT
+COPY ./tools/my-script_4.sh /my-script_4.sh
+RUN chmod +x /my-script_4.sh
 
-ENTRYPOINT ["./SCRIPT"]
+ENTRYPOINT ["/my-script_4.sh"]
 
 # docker build -t mariadb --no-cache srcs/requirements/mariadb/
 # docker run -it mariadb:latest
+

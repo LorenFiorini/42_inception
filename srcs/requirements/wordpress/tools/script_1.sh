@@ -1,5 +1,8 @@
 #!/bin/bash
 
+ls -la /var/www/wordpress	# Debug
+ls -la /var/www/wordpress/wp-config.php	# Debug
+
 cd /var/www/wordpress
 
 sleep 5

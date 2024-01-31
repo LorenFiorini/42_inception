@@ -36,11 +36,11 @@ RUN chown -R root:root /var/www/wordpress
 ARG SCRIPT=script_1.sh
 
 # Copy the script and make it executable
-COPY ./tools/$SCRIPT /
-RUN chmod +x $SCRIPT
+COPY ./tools/script_1.sh /script_1.sh
+RUN chmod +x script_1.sh
 
 
-ENTRYPOINT ["./$SCRIPT"]
+ENTRYPOINT ["./script_1.sh"]
 
 
 # docker build -t wordpress --no-cache srcs/requirements/wordpress/
