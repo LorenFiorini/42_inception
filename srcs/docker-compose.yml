@@ -3,7 +3,26 @@
 
 # If only only the major version is specified (e.g. 3), then Compose will allow minor updates to the major version (e.g. 3.7). Compose will not allow patch releases of the major version (e.g. 3.7.2).
 
-version:  '3.3'
+version:  '3'
+
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/lfiorini/data/mariadb'
+  wordpress:
+    driver: local
+    driver_opts:
+      type: 'none'
+      o: 'bind'
+      device: '/home/lfiorini/data/wordpress'
+
+networks:
+  inception:
+    driver: bridge
+
 
 services:
   mariadb:
@@ -46,22 +65,4 @@ services:
   #     - wordpress:/var/www/wordpress
   #   restart: unless-stopped
 
-
-volumes:
-  mariadb:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/home/lfiorini/data/mariadb'
-  wordpress:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/home/lfiorini/data/wordpress'
-
-networks:
-  inception:
-    driver: bridge
 
