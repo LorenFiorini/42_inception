@@ -14,7 +14,7 @@
 
 FROM debian:bullseye
 
-RUN apt-get update
+RUN apt update
 RUN apt install -y mariadb-server
 
 COPY ./conf/my-server_.conf /etc/mysql/mariadb.conf.d/50-server.cnf
@@ -22,8 +22,7 @@ RUN chmod 644 /etc/mysql/mariadb.conf.d/50-server.cnf
 
 # RUN ls -la /
 ARG SCRIPT=my-script_4.sh
-
-COPY ./tools/SCRIPT /
+COPY ./tools/SCRIPT .
 RUN chmod +x /SCRIPT
 
 ENTRYPOINT ["./SCRIPT"]
