@@ -12,7 +12,8 @@
 
 # Path: srcs/requirements/mariadb/Dockerfile
 
-FROM debian:bullseye
+FROM debian:oldstable
+# FROM debian:bullseye
 
 RUN apt update
 RUN apt install -y mariadb-server
