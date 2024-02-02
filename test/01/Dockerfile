@@ -1,6 +1,8 @@
 
 
-FROM debian:bullseye
+# FROM debian:bullseye
+FROM debian:oldstable
+
 
 RUN apt update
 RUN apt install -y curl wget sudo unzip \
