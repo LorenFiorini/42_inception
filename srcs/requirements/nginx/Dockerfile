@@ -19,8 +19,8 @@ RUN rm -rf /var/lib/apt/lists/*
 
 
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
-       -out /etc/ssl/certs/lfiorini.crt \
-       -keyout /etc/ssl/private/lfiorini.key \
+       -out /etc/ssl/certs/lfiorini.42.fr.crt \
+       -keyout /etc/ssl/private/lfiorini.42.fr.key \
        -subj "/C=DE/ST=Baden-Wuerttemberg/L=Heilbronn/O=42Heilbronn/OU=student/CN=lfiorini.42.fr/"
 
 # ARG DOMAIN=$DOMAIN_NAME
