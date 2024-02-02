@@ -1,28 +1,11 @@
 
-# Subject: You also have to write your own Dockerfiles, one per service. The Dockerfiles must be called in your docker-compose.yml by your Makefile.
+# Subject: You also have to write your own Dockerfiles, one per service.
+# The Dockerfiles must be called in your docker-compose.yml by your Makefile.
 
-# If only only the major version is specified (e.g. 3), then Compose will allow minor updates to the major version (e.g. 3.7). Compose will not allow patch releases of the major version (e.g. 3.7.2).
+# If only the major version (e.g. 3), then Compose allows minor updates(e.g. 3.7).
+# Compose will not allow patch releases of the major version (e.g. 3.7.2).
 
-version:  '3'
-
-volumes:
-  mariadb:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/home/lfiorini/data/mariadb'
-  wordpress:
-    driver: local
-    driver_opts:
-      type: 'none'
-      o: 'bind'
-      device: '/home/lfiorini/data/wordpress'
-
-networks:
-  inception:
-    driver: bridge
-
+version: '3'
 
 services:
   mariadb:
@@ -36,6 +19,21 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     restart: unless-stopped
+
+  nginx:
+    container_name: nginx
+    depends_on:
+      - wordpress
+    build: requirements/nginx
+    env_file: .env
+    networks:
+      - inception
+    ports:
+      - "443:443"
+    volumes:
+      - wordpress:/var/www/wordpress
+    restart: unless-stopped
+
   wordpress:
     container_name: wordpress
     depends_on:
@@ -49,20 +47,23 @@ services:
     volumes:
       - wordpress:/var/www/wordpress
     restart: unless-stopped
-  # nginx:
-  #   container_name: nginx
-  #   depends_on:
-  #     - wordpress
-  #   build: requirements/nginx
-  #   env_file: .env
-  #   environment:
-  #     - BONUS
-  #   networks:
-  #     - inception
-  #   ports:
-  #     - "443:443"
-  #   volumes:
-  #     - wordpress:/var/www/wordpress
-  #   restart: unless-stopped
 
+
+volumes:
+  mariadb:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "/home/lfiorini/data/mariadb"
+  wordpress:
+    driver: local
+    driver_opts:
+      type: "none"
+      o: "bind"
+      device: "/home/lfiorini/data/wordpress"
+
+networks:
+  inception:
+    driver: bridge
 

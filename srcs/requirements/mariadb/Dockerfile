@@ -13,11 +13,9 @@
 # Path: srcs/requirements/mariadb/Dockerfile
 
 FROM debian:oldstable
-# FROM debian:bullseye
 
 RUN apt update
 RUN apt install -y mariadb-server
-
 
 RUN mkdir /run/mysqld
 COPY conf/my-server_3.cnf /etc/mysql/mariadb.conf.d/50-server.cnf

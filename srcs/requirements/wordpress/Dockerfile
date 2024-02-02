@@ -12,7 +12,7 @@
 
 # Path: srcs/requirements/wordpress/Dockerfile
 
-FROM debian:oldstable
+FROM debian:bullseye
 
 RUN apt update
 RUN apt install -y curl wget sudo unzip \

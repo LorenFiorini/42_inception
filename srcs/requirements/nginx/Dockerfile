@@ -12,7 +12,6 @@
 
 # Path: srcs/requirements/nginx/Dockerfile
 
-# FROM debian:bullseye
 FROM debian:oldstable
 
 RUN apt update && apt install nginx openssl -y 
