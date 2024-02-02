@@ -8,60 +8,62 @@
 version: '3'
 
 services:
-  mariadb:
-    container_name: mariadb
-    build: requirements/mariadb
-    env_file: .env
-    networks:
-      - inception
-    expose:
-      - "3306"
-    volumes:
-      - mariadb:/var/lib/mysql
-    restart: unless-stopped
-  nginx:
-    container_name: nginx
-    depends_on:
-      - wordpress
-    build: requirements/nginx
-    env_file: .env
-    networks:
-      - inception
-    ports:
-      - "443:443"
-    volumes:
-      - wordpress:/var/www/wordpress
-    restart: unless-stopped
-  wordpress:
-    container_name: wordpress
-    depends_on:
-      - mariadb
-    build: requirements/wordpress
-    env_file: .env
-    networks:
-      - inception
-    expose:
-      - "9000"
-    volumes:
-      - wordpress:/var/www/wordpress
-    restart: unless-stopped
+	mariadb:
+		container_name: mariadb
+		build: requirements/mariadb
+		env_file: .env
+		networks:
+			- inception
+		expose:
+			- "3306"
+		volumes:
+			- mariadb:/var/lib/mysql
+		restart: unless-stopped
+
+	wordpress:
+		container_name: wordpress
+		depends_on:
+			- mariadb
+		build: requirements/wordpress
+		env_file: .env
+		networks:
+			- inception
+		expose:
+			- "9000"
+		volumes:
+			- wordpress:/var/www/wordpress
+		restart: unless-stopped
+
+	nginx:
+		container_name: nginx
+		depends_on:
+			- wordpress
+		build: requirements/nginx
+		env_file: .env
+		networks:
+			- inception
+		ports:
+			- "443:443"
+		volumes:
+			- wordpress:/var/www/wordpress
+		restart: unless-stopped
 
 
 volumes:
-  mariadb:
-    driver: local
-    driver_opts:
-      type: "none"
-      o: "bind"
-      device: "/home/lfiorini/data/mariadb"
-  wordpress:
-    driver: local
-    driver_opts:
-      type: "none"
-      o: "bind"
-      device: "/home/lfiorini/data/wordpress"
+	mariadb:
+		driver: local
+		driver_opts:
+			type: "none"
+			o: "bind"
+			device: "/home/lfiorini/data/mariadb"
+	wordpress:
+		driver: local
+		driver_opts:
+			type: "none"
+			o: "bind"
+			device: "/home/lfiorini/data/wordpress"
 
 networks:
-  inception:
-    driver: bridge
+	inception:
+		driver: bridge
 
