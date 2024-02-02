@@ -19,7 +19,6 @@ services:
     volumes:
       - mariadb:/var/lib/mysql
     restart: unless-stopped
-
   nginx:
     container_name: nginx
     depends_on:
@@ -33,7 +32,6 @@ services:
     volumes:
       - wordpress:/var/www/wordpress
     restart: unless-stopped
-
   wordpress:
     container_name: wordpress
     depends_on:

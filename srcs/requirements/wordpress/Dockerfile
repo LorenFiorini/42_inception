@@ -50,12 +50,12 @@ COPY conf/php.ini /etc/php/7.4/fpm/php.ini
 
 
 # Copy the script and make it executable
-COPY tools/script_2.sh /script_2.sh
-RUN chmod +x /script_2.sh
+COPY tools/script_2.sh /my-script.sh
+RUN chmod +x /my-script.sh
 
-# ENTRYPOINT ["./script_2.sh"]
+# ENTRYPOINT ["./my-script.sh"]
 
-CMD ["/script_2.sh"]
+CMD ["/my-script.sh"]
 
 # docker build -t wordpress --no-cache srcs/requirements/wordpress/
 # docker run -it wordpress:latest

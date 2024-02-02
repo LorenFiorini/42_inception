@@ -1,3 +1,6 @@
-Error response from daemon: No such image: srcs-nginx:latest
-Error response from daemon: No such image: srcs-mariadb:latest
-Error response from daemon: No such image: srcs-wordpress:latest
+"docker volume rm" requires at least 1 argument.
+See 'docker volume rm --help'.
+
+Usage:  docker volume rm [OPTIONS] VOLUME [VOLUME...]
+
+Remove one or more volumes
