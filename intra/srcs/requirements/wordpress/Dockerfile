@@ -14,34 +14,48 @@
 
 FROM debian:bullseye
 
-RUN apt-get update && apt-get upgrade -y
-RUN apt -y install curl php php-fpm php-mysql mariadb-client
+RUN apt update
+RUN apt install -y curl wget sudo unzip \
+	mariadb-client fcgiwrap php \
+	php-fpm php-mysqli php-json php-curl php-dom \
+	php-exif php-fileinfo php-mbstring \
+	php-xml php-zip php-redis php-cli php-phar \
+	default-mysql-client php-mysql 
+
+# Create directory and setting ownership
+RUN	mkdir -p /var/www 
+RUN chown -R www-data:www-data /var/www
 
 
-# Create directory and download WordPress
-RUN	mkdir -p /var/www
-RUN curl -O https://wordpress.org/wordpress-6.4.2.tar.gz && \
-    tar -xzvf wordpress-6.4.2.tar.gz -C /var/www && \
-    rm wordpress-6.4.2.tar.gz
+# RUN curl -O https://wordpress.org/wordpress-6.4.2.tar.gz && \
+#     tar -xzvf wordpress-6.4.2.tar.gz -C /var/www && \
+#     rm wordpress-6.4.2.tar.gz
 
 # Install and configure WP-CLI
-RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-    chmod +x wp-cli.phar && \
-    mv wp-cli.phar /usr/local/bin/
+# RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
+#     chmod +x wp-cli.phar && \
+#     mv wp-cli.phar /usr/local/bin/
+
+# Trying wget instead of curl
+RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 
 # Set ownership and permissions
-RUN chown -R root:root /var/www/wordpress
+RUN chmod +rw /var/lib/php/sessions
+RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
+# RUN chown -R root:root /var/www/wordpress
 
-ARG SCRIPT=script_1.sh
+COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY conf/php.ini /etc/php/7.4/fpm/php.ini
+
 
 # Copy the script and make it executable
-COPY ./tools/script_1.sh /script_1.sh
-RUN chmod +x script_1.sh
+COPY tools/script_2.sh /script_2.sh
+RUN chmod +x /script_2.sh
 
+# ENTRYPOINT ["./script_2.sh"]
 
-ENTRYPOINT ["./script_1.sh"]
-
+CMD ["/script_2.sh"]
 
 # docker build -t wordpress --no-cache srcs/requirements/wordpress/
 # docker run -it wordpress:latest
