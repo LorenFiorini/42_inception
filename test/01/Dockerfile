@@ -12,7 +12,9 @@ RUN apt install -y curl wget sudo unzip \
 	php-xml php-zip php-redis php-cli php-phar \
 	default-mysql-client php-mysql 
 
-COPY ./tools/script_0.sh /script_0.sh
-RUN chmod +x /script_0.sh
+RUN apt install -y nginx openssl
 
-ENTRYPOINT ["/script_0.sh"]
+COPY ./tools/script_1.sh /script.sh
+RUN chmod +x /script.sh
+
+ENTRYPOINT ["/script.sh"]
