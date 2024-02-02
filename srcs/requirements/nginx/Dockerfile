@@ -14,7 +14,8 @@
 
 FROM debian:bullseye
 
-RUN apt update && apt install -y nginx openssl
+RUN apt update
+RUN apt install nginx openssl curl vim -y
 RUN rm -rf /var/lib/apt/lists/*
 
 

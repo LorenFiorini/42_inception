@@ -6,7 +6,7 @@
 #    By: lfiorini <lfiorini@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 08:32:57 by lfiorini          #+#    #+#              #
-#    Updated: 2024/02/02 08:10:30 by lfiorini         ###   ########.fr        #
+#    Updated: 2024/02/02 11:57:09 by lfiorini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ MARIADB_VOL		:= /home/lfiorini/data/mariadb
 WORDPRESS_VOL	:= /home/lfiorini/data/wordpress
 
 COMPOSE_YML		:= ./srcs/docker-compose.yml
-DEBUG			:= ./debug/makefile/04.log
+DEBUG			:= ./debug/makefile/05.log
 
 GREEN			:= \033[32m
 YELLOW			:= \033[33m
