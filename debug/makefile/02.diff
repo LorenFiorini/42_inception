@@ -1,0 +1,87 @@
+9c9
+< #    Updated: 2024/02/02 08:10:30 by lfiorini         ###   ########.fr        #
+---
+> #    Updated: 2024/02/02 03:12:47 by lfiorini         ###   ########.fr        #
+19c19
+< DEBUG			:= ./debug/makefile/04.log
+---
+> DEBUG			:= ./debug/makefile/03.log
+31c31
+< 	docker compose -f $(COMPOSE_YML) up -d --build
+---
+> 	sudo docker compose -f $(COMPOSE_YML) up -d --build
+34c34
+< 	docker compose -f $(COMPOSE_YML) down
+---
+> 	sudo docker compose -f $(COMPOSE_YML) down
+37c37
+< 	docker compose -f $(COMPOSE_YML) stop
+---
+> 	sudo docker compose -f $(COMPOSE_YML) stop
+40c40
+< 	docker compose -f $(COMPOSE_YML) start
+---
+> 	sudo docker compose -f $(COMPOSE_YML) start
+43c43
+< 	@		echo "$(GREEN)> docker ps -a $(C_END)"
+---
+> 	@echo "$(GREEN)> docker ps -a $(C_END)"
+45c45
+< 	@		echo "$(GREEN)> docker image ls -a $(C_END)"
+---
+> 	@echo "$(GREEN)> docker image ls -a $(C_END)"
+47c47
+< 	@		echo "$(GREEN)> docker network ls $(C_END)"
+---
+> 	@echo "$(GREEN)> docker network ls $(C_END)"
+49c49
+< 	@		echo "$(GREEN)> docker volume ls $(C_END)"
+---
+> 	@echo "$(GREEN)> docker volume ls $(C_END)"
+54,56c54,57
+< 	-docker compose -f $(COMPOSE_YML) down 2>>$(DEBUG)
+< 	-docker image rm -f srcs-nginx srcs-mariadb srcs-wordpress  2>>$(DEBUG)
+< 	-docker system prune -f --all
+---
+> 	-sudo docker compose -f srcs/docker-compose.yml down -v  2>$(DEBUG)
+> 	-docker image rm -f srcs-nginx srcs-mariadb srcs-wordpress  2>$(DEBUG)
+> 	docker system prune -f --all
+> #	docker system prune -f
+58d58
+< # To-do: if not empty $$... 
+60,70c60
+< fclean: clean
+< 	@		echo "$(YELLOW)> docker stop $(C_END)"
+< 	@-sudo docker stop $$(docker ps -qa) 2>>$(DEBUG)
+< 	@		echo "$(YELLOW)> docker container rm $(C_END)"
+< 	@-sudo docker container rm $$(docker ps -qa) 2>>$(DEBUG)
+< 	@		echo "$(YELLOW)> docker image rm -f $(C_END)"
+< 	@-sudo docker image rm -f $$(docker images -qa) 2>>$(DEBUG)
+< 	@		echo "$(YELLOW)> docker network rm $(C_END)"
+< 	@-sudo docker network rm $$(docker network ls -q) 2>>$(DEBUG)
+< 	@		echo "$(YELLOW)> docker volume rm $(C_END)"
+< 	@-sudo docker volume rm $$(docker volume ls -q) 2>>$(DEBUG)
+---
+> # To-do: if not empty $$... 
+72c62,80
+< re: fclean all
+---
+> fclean:
+> 	@echo "$(YELLOW)> docker stop $(C_END)"
+> 	@-sudo docker stop $$(docker ps -qa) 2>$(DEBUG)
+> 	@echo "$(YELLOW)> docker container rm $(C_END)"
+> 	@-sudo docker container rm $$(docker ps -qa) 2>$(DEBUG)
+> 	@echo "$(YELLOW)> docker image rm -f $(C_END)"
+> 	@-sudo docker image rm -f $$(docker images -qa) 2>$(DEBUG)
+> 	@echo "$(YELLOW)> docker network rm $(C_END)"
+> 	@-sudo docker network rm $$(docker network ls -q) 2>$(DEBUG)
+> 	@echo "$(YELLOW)> docker volume rm $(C_END)"
+> 	@-sudo docker volume rm $$(docker volume ls -q) 2>$(DEBUG)
+> 
+> 
+> # re: down
+> # 	sudo docker compose -f srcs/docker-compose.yml up -d --build
+> 
+> re: down
+> 	sudo docker compose -f srcs/docker-compose.yml build
+> 	sudo docker compose -f srcs/docker-compose.yml up -d
