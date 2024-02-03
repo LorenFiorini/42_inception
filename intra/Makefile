@@ -6,18 +6,17 @@
 #    By: lfiorini <lfiorini@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 08:32:57 by lfiorini          #+#    #+#              #
-#    Updated: 2024/02/03 05:55:07 by lfiorini         ###   ########.fr        #
+#    Updated: 2024/02/02 08:10:30 by lfiorini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # /home/lfiorini/42/inception
 
-COMPOSE_YML		:= ./srcs/docker-compose.yml
 MARIADB_VOL		:= /home/lfiorini/data/mariadb
 WORDPRESS_VOL	:= /home/lfiorini/data/wordpress
 
 COMPOSE_YML		:= ./srcs/docker-compose.yml
-DEBUG			:= ./debug/makefile/05.log
+DEBUG			:= ./debug/makefile/04.log
 
 GREEN			:= \033[32m
 YELLOW			:= \033[33m
@@ -54,10 +53,21 @@ ls:
 clean:
 	-docker compose -f $(COMPOSE_YML) down 2>>$(DEBUG)
 	-docker image rm -f srcs-nginx srcs-mariadb srcs-wordpress  2>>$(DEBUG)
+	-docker system prune -f --all
+
+# To-do: if not empty $$... 
 
 fclean: clean
-	-docker system prune -f --all
-	docker volume rm $$(docker volume ls -q) 2>>$(DEBUG)
+	@		echo "$(YELLOW)> docker stop $(C_END)"
+	@-sudo docker stop $$(docker ps -qa) 2>>$(DEBUG)
+	@		echo "$(YELLOW)> docker container rm $(C_END)"
+	@-sudo docker container rm $$(docker ps -qa) 2>>$(DEBUG)
+	@		echo "$(YELLOW)> docker image rm -f $(C_END)"
+	@-sudo docker image rm -f $$(docker images -qa) 2>>$(DEBUG)
+	@		echo "$(YELLOW)> docker network rm $(C_END)"
+	@-sudo docker network rm $$(docker network ls -q) 2>>$(DEBUG)
+	@		echo "$(YELLOW)> docker volume rm $(C_END)"
+	@-sudo docker volume rm $$(docker volume ls -q) 2>>$(DEBUG)
 
 re: fclean all
 

@@ -1,0 +1,4 @@
+./srcs/.env
+.vscode
+./debug
+*.DS_Store

@@ -10,6 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
+# Path: srcs/requirements/mariadb/Dockerfile
+
 FROM debian:bullseye
 
 RUN apt update
@@ -22,4 +24,8 @@ COPY conf/my-server_3.cnf /etc/mysql/mariadb.conf.d/50-server.cnf
 COPY tools/my-script_5.sh /usr/local/bin/my-script.sh
 RUN chmod +x /usr/local/bin/my-script.sh 
 
+# ENTRYPOINT ["/usr/local/bin/my-script.sh"]
 CMD ["/usr/local/bin/my-script.sh"]
+
+# docker build -t mariadb --no-cache srcs/requirements/mariadb/
+# docker run -it mariadb:latest

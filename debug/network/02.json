@@ -1,0 +1,49 @@
+[
+    {
+        "Name": "srcs_inception",
+        "Id": "39c3dc06e79310c2e12c7f552efe0b9a61b393f2439683e2438877aa4594d40d",
+        "Created": "2024-02-02T08:22:15.556491669+01:00",
+        "Scope": "local",
+        "Driver": "bridge",
+        "EnableIPv6": false,
+        "IPAM": {
+            "Driver": "default",
+            "Options": null,
+            "Config": [
+                {
+                    "Subnet": "172.18.0.0/16",
+                    "Gateway": "172.18.0.1"
+                }
+            ]
+        },
+        "Internal": false,
+        "Attachable": false,
+        "Ingress": false,
+        "ConfigFrom": {
+            "Network": ""
+        },
+        "ConfigOnly": false,
+        "Containers": {
+            "535c568dd8b5911505865172a76e2ed54cd71236b960c42f928e640b68cb882e": {
+                "Name": "wordpress",
+                "EndpointID": "08268adb15eb2214ac49a44f023af8dc3415640e2589aee23542ae319f7b1a02",
+                "MacAddress": "02:42:ac:12:00:03",
+                "IPv4Address": "172.18.0.3/16",
+                "IPv6Address": ""
+            },
+            "dea6a57cf828b730a43547243e54a4418e436f8feea09d3b85f95bf0e12a2510": {
+                "Name": "mariadb",
+                "EndpointID": "388c10392802215fbd2b70e5d14e46b5780a77d192c9cd61979e40357eebc5f9",
+                "MacAddress": "02:42:ac:12:00:02",
+                "IPv4Address": "172.18.0.2/16",
+                "IPv6Address": ""
+            }
+        },
+        "Options": {},
+        "Labels": {
+            "com.docker.compose.network": "inception",
+            "com.docker.compose.project": "srcs",
+            "com.docker.compose.version": "2.24.5"
+        }
+    }
+]
