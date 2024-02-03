@@ -38,7 +38,10 @@ services:
     container_name: nginx
     depends_on:
       - wordpress
-    build: requirements/nginx
+    build:
+      context: requirements/nginx
+      args:
+        CERT: ${CERTIFICATES}
     env_file: .env
     networks:
       - inception

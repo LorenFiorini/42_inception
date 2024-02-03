@@ -37,14 +37,15 @@ RUN chown -R www-data:www-data /var/www
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 RUN chmod +rw /var/lib/php/sessions
-RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
+RUN chmod +x wp-cli.phar
+RUN mv wp-cli.phar /usr/local/bin/
 # RUN chown -R root:root /var/www/wordpress
 
 COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY conf/php.ini /etc/php/7.4/fpm/php.ini
 
 
-COPY tools/script_2.sh /my-script.sh
+COPY tools/script_3.sh /my-script.sh
 RUN chmod +x /my-script.sh
 
 # ENTRYPOINT ["./my-script.sh"]
