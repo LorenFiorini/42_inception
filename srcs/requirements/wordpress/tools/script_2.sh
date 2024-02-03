@@ -1,12 +1,12 @@
 #! /usr/bin/env /bin/bash
 
 
-mkdir -p /var/www/html
-chown -R www-data:www-data /var/www/html 
-cd /var/www/html
+mkdir -p /var/www/wordpress
+chown -R www-data:www-data /var/www/wordpress 
+cd /var/www/wordpress
 
-if ! sudo -u www-data wp core is-installed --path=/var/www/html; then
-	sudo -u www-data wp core download --path=/var/www/html
+if ! sudo -u www-data wp core is-installed --path=/var/www/wordpress; then
+	sudo -u www-data wp core download --path=/var/www/wordpress
 	sudo -u www-data wp config create --dbhost=mariadb --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_PASS} --allow-root --force
 	sudo -u www-data wp core install --url==${WP_URL} --title=lfiorini --admin_user=${ADMIN_USER} --admin_password=${ADMIN_PASS} --admin_email=admin@lfiorini.42.fr
 	sudo -u www-data wp config set HTTP_HOST 'nginx'
