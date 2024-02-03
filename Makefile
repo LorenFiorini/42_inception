@@ -6,7 +6,7 @@
 #    By: lfiorini <lfiorini@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 08:32:57 by lfiorini          #+#    #+#              #
-#    Updated: 2024/02/03 04:12:58 by lfiorini         ###   ########.fr        #
+#    Updated: 2024/02/03 04:20:29 by lfiorini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -56,6 +56,7 @@ clean:
 
 fclean: clean
 	-docker system prune -f --all
+	docker volume rm $$(docker volume ls -q) 2>>$(DEBUG)
 
 re: fclean all
 
