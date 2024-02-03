@@ -20,20 +20,6 @@ services:
       - mariadb:/var/lib/mysql
     restart: unless-stopped
 
-  # nginx:
-  #   container_name: nginx
-  #   depends_on:
-  #     - wordpress
-  #   build: requirements/nginx
-  #   env_file: .env
-  #   networks:
-  #     - inception
-  #   ports:
-  #     - "443:443"
-  #   volumes:
-  #     - wordpress:/var/www/wordpress
-  #   restart: unless-stopped
-
   wordpress:
     container_name: wordpress
     depends_on:
@@ -44,6 +30,20 @@ services:
       - inception
     expose:
       - "9000"
+    volumes:
+      - wordpress:/var/www/wordpress
+    restart: unless-stopped
+
+  nginx:
+    container_name: nginx
+    depends_on:
+      - wordpress
+    build: requirements/nginx
+    env_file: .env
+    networks:
+      - inception
+    ports:
+      - "443:443"
     volumes:
       - wordpress:/var/www/wordpress
     restart: unless-stopped
