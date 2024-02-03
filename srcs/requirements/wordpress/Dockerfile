@@ -10,8 +10,6 @@
 #                                                                              #
 # **************************************************************************** #
 
-# Path: srcs/requirements/wordpress/Dockerfile
-
 FROM debian:bullseye
 
 RUN apt update
@@ -25,30 +23,15 @@ RUN apt install -y curl wget sudo unzip \
 RUN	mkdir -p /var/www 
 RUN chown -R www-data:www-data /var/www
 
-
-# RUN curl -O https://wordpress.org/wordpress-6.4.2.tar.gz && \
-#     tar -xzvf wordpress-6.4.2.tar.gz -C /var/www && \
-#     rm wordpress-6.4.2.tar.gz
-
-# RUN curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar && \
-#     chmod +x wp-cli.phar && \
-#     mv wp-cli.phar /usr/local/bin/
-
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 
 RUN chmod +rw /var/lib/php/sessions
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
-# RUN chown -R root:root /var/www/wordpress
 
 COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
 COPY conf/php.ini /etc/php/7.4/fpm/php.ini
 
-
 COPY tools/script_2.sh /my-script.sh
 RUN chmod +x /my-script.sh
 
-# ENTRYPOINT ["./my-script.sh"]
 CMD ["/my-script.sh"]
-
-# docker build -t wordpress --no-cache srcs/requirements/wordpress/
-# docker run -it wordpress:latest

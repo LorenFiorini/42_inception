@@ -130,6 +130,9 @@ See 'docker volume rm --help'.
 Usage:  docker volume rm [OPTIONS] VOLUME [VOLUME...]
 
 Remove one or more volumes
+Error response from daemon: No such image: srcs-nginx:latest
+Error response from daemon: No such image: srcs-mariadb:latest
+Error response from daemon: No such image: srcs-wordpress:latest
  Container nginx  Stopping
  Container nginx  Stopped
  Container nginx  Removing
@@ -144,60 +147,12 @@ Remove one or more volumes
  Container mariadb  Removed
  Network srcs_inception  Removing
  Network srcs_inception  Removed
-"docker stop" requires at least 1 argument.
-See 'docker stop --help'.
-
-Usage:  docker stop [OPTIONS] CONTAINER [CONTAINER...]
-
-Stop one or more running containers
-"docker container rm" requires at least 1 argument.
-See 'docker container rm --help'.
-
-Usage:  docker container rm [OPTIONS] CONTAINER [CONTAINER...]
-
-Remove one or more containers
-"docker image rm" requires at least 1 argument.
-See 'docker image rm --help'.
-
-Usage:  docker image rm [OPTIONS] IMAGE [IMAGE...]
-
-Remove one or more images
-Error response from daemon: bridge is a pre-defined network and cannot be removed
-Error response from daemon: host is a pre-defined network and cannot be removed
-Error response from daemon: none is a pre-defined network and cannot be removed
 Error response from daemon: No such image: srcs-nginx:latest
 Error response from daemon: No such image: srcs-mariadb:latest
 Error response from daemon: No such image: srcs-wordpress:latest
 Error response from daemon: No such image: srcs-nginx:latest
 Error response from daemon: No such image: srcs-mariadb:latest
 Error response from daemon: No such image: srcs-wordpress:latest
-"docker stop" requires at least 1 argument.
-See 'docker stop --help'.
-
-Usage:  docker stop [OPTIONS] CONTAINER [CONTAINER...]
-
-Stop one or more running containers
-"docker container rm" requires at least 1 argument.
-See 'docker container rm --help'.
-
-Usage:  docker container rm [OPTIONS] CONTAINER [CONTAINER...]
-
-Remove one or more containers
-"docker image rm" requires at least 1 argument.
-See 'docker image rm --help'.
-
-Usage:  docker image rm [OPTIONS] IMAGE [IMAGE...]
-
-Remove one or more images
-Error response from daemon: bridge is a pre-defined network and cannot be removed
-Error response from daemon: host is a pre-defined network and cannot be removed
-Error response from daemon: none is a pre-defined network and cannot be removed
-"docker volume rm" requires at least 1 argument.
-See 'docker volume rm --help'.
-
-Usage:  docker volume rm [OPTIONS] VOLUME [VOLUME...]
-
-Remove one or more volumes
  Container nginx  Stopping
  Container nginx  Stopped
  Container nginx  Removing
@@ -212,24 +167,3 @@ Remove one or more volumes
  Container mariadb  Removed
  Network srcs_inception  Removing
  Network srcs_inception  Removed
-"docker stop" requires at least 1 argument.
-See 'docker stop --help'.
-
-Usage:  docker stop [OPTIONS] CONTAINER [CONTAINER...]
-
-Stop one or more running containers
-"docker container rm" requires at least 1 argument.
-See 'docker container rm --help'.
-
-Usage:  docker container rm [OPTIONS] CONTAINER [CONTAINER...]
-
-Remove one or more containers
-"docker image rm" requires at least 1 argument.
-See 'docker image rm --help'.
-
-Usage:  docker image rm [OPTIONS] IMAGE [IMAGE...]
-
-Remove one or more images
-Error response from daemon: bridge is a pre-defined network and cannot be removed
-Error response from daemon: host is a pre-defined network and cannot be removed
-Error response from daemon: none is a pre-defined network and cannot be removed

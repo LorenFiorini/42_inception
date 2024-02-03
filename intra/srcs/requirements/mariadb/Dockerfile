@@ -27,6 +27,5 @@ RUN chmod +x /usr/local/bin/my-script.sh
 # ENTRYPOINT ["/usr/local/bin/my-script.sh"]
 CMD ["/usr/local/bin/my-script.sh"]
 
-
 # docker build -t mariadb --no-cache srcs/requirements/mariadb/
 # docker run -it mariadb:latest
