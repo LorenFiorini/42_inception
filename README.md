@@ -58,7 +58,7 @@ Your containers have to restart in case of a crash.
 To make things simpler, you have to configure your domain name so it points to your local IP address.
 
 This domain name must be [`login.42.fr`](http://login.42.fr/). Again, you have to use your own login.
-For example, [`lfiorini.42.fr`](http://wil.42.fr/) would redirect to the IP address pointing to my website.
+For example, [`lfiorini.42.fr`](https://lfiorini.42.fr/) would redirect to the IP address pointing to my website.
 
 > The latest tag is prohibited.
 > 
@@ -76,14 +76,14 @@ For example, [`lfiorini.42.fr`](http://wil.42.fr/) would redirect to the IP addr
 
 Diagram of the expected result
 
-![Diagram of the expected result](assets/diagram.png)
+![Diagram of the expected result](https://github.com/LorenFiorini/42_inception/blob/d0cbf266c684ca713e7e0259fb479ad2b0c5a233/assets/diagram.png)
 
 
 ### Directory Structure
 
 Example of the expected directory structure
 
-![Example of the expected directory structure](assets/directory_structure.png)
+![Example of the expected directory structure](https://github.com/LorenFiorini/42_inception/blob/d0cbf266c684ca713e7e0259fb479ad2b0c5a233/assets/directory_structure.png)
 
 
 > For obvious security reasons, any credentials, API keys, env variables etc... must be saved locally in a `.env` file and ignored by git. Publicly stored credentials will lead you directly to a failure of the project.
