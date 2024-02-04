@@ -12,7 +12,7 @@
 
 FROM debian:bullseye
 
-RUN apt update
+RUN apt update -y
 RUN apt install -y curl wget sudo unzip \
 	mariadb-client fcgiwrap php \
 	php-fpm php-mysqli php-json php-curl php-dom \
@@ -28,10 +28,10 @@ RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.ph
 RUN chmod +rw /var/lib/php/sessions
 RUN chmod +x wp-cli.phar && mv wp-cli.phar /usr/local/bin/wp
 
-COPY conf/www.conf /etc/php/7.4/fpm/pool.d/www.conf
-COPY conf/php.ini /etc/php/7.4/fpm/php.ini
+COPY conf/my-www.conf /etc/php/7.4/fpm/pool.d/www.conf
+COPY conf/my-php.ini /etc/php/7.4/fpm/php.ini
 
-COPY tools/script_2.sh /my-script.sh
+COPY tools/my-script.sh /my-script.sh
 RUN chmod +x /my-script.sh
 
 CMD ["/my-script.sh"]
