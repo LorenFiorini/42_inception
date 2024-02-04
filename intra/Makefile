@@ -6,17 +6,18 @@
 #    By: lfiorini <lfiorini@student.42heilbronn.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/04 08:32:57 by lfiorini          #+#    #+#              #
-#    Updated: 2024/02/02 08:10:30 by lfiorini         ###   ########.fr        #
+#    Updated: 2024/02/03 06:24:18 by lfiorini         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 # /home/lfiorini/42/inception
 
+COMPOSE_YML		:= ./srcs/docker-compose.yml
 MARIADB_VOL		:= /home/lfiorini/data/mariadb
 WORDPRESS_VOL	:= /home/lfiorini/data/wordpress
 
 COMPOSE_YML		:= ./srcs/docker-compose.yml
-DEBUG			:= ./debug/makefile/04.log
+DEBUG			:= ./debug/makefile/06.log
 
 GREEN			:= \033[32m
 YELLOW			:= \033[33m
@@ -26,8 +27,8 @@ C_END			:= \033[0m
 include ./srcs/.env
 
 all:
-	mkdir -p $(MARIADB_VOL)
-	mkdir -p $(WORDPRESS_VOL)
+	sudo mkdir -p $(MARIADB_VOL)
+	sudo mkdir -p $(WORDPRESS_VOL)
 	docker compose -f $(COMPOSE_YML) up -d --build
 
 down:
@@ -39,6 +40,10 @@ stop:
 start:
 	docker compose -f $(COMPOSE_YML) start
 
+rm_data:
+	-sudo rm -rf $(MARIADB_VOL)
+	-sudo rm -rf $(WORDPRESS_VOL)
+
 ls:
 	@		echo "$(GREEN)> docker ps -a $(C_END)"
 	@ docker ps -a
@@ -49,26 +54,20 @@ ls:
 	@		echo "$(GREEN)> docker volume ls $(C_END)"
 	@ docker volume ls
 
-
 clean:
+	@		echo "$(YELLOW)> Cleaning... $(C_END)"
 	-docker compose -f $(COMPOSE_YML) down 2>>$(DEBUG)
 	-docker image rm -f srcs-nginx srcs-mariadb srcs-wordpress  2>>$(DEBUG)
-	-docker system prune -f --all
+	-docker volume rm $$(docker volume ls -q) 2>>$(DEBUG)
 
-# To-do: if not empty $$... 
+fclean:
+	$(MAKE) clean 2>>$(DEBUG)
+	-docker system prune -f --all 
 
-fclean: clean
-	@		echo "$(YELLOW)> docker stop $(C_END)"
-	@-sudo docker stop $$(docker ps -qa) 2>>$(DEBUG)
-	@		echo "$(YELLOW)> docker container rm $(C_END)"
-	@-sudo docker container rm $$(docker ps -qa) 2>>$(DEBUG)
-	@		echo "$(YELLOW)> docker image rm -f $(C_END)"
-	@-sudo docker image rm -f $$(docker images -qa) 2>>$(DEBUG)
-	@		echo "$(YELLOW)> docker network rm $(C_END)"
-	@-sudo docker network rm $$(docker network ls -q) 2>>$(DEBUG)
-	@		echo "$(YELLOW)> docker volume rm $(C_END)"
-	@-sudo docker volume rm $$(docker volume ls -q) 2>>$(DEBUG)
+re:	
+	$(MAKE) fclean 2>>$(DEBUG)
+	$(MAKE) rm_data 2>>$(DEBUG)
+	$(MAKE) all 2>>$(DEBUG)
 
-re: fclean all
 
 .PHONY: all clean fclean re 
