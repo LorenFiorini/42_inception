@@ -12,7 +12,7 @@
 
 FROM debian:bullseye
 
-RUN apt update
+RUN apt update -y
 RUN apt install nginx openssl curl vim -y
 RUN rm -rf /var/lib/apt/lists/*
 
@@ -21,8 +21,8 @@ RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
        -keyout /etc/ssl/private/lfiorini.42.fr.key \
        -subj "/C=DE/ST=Baden-Wuerttemberg/L=Heilbronn/O=42Heilbronn/OU=student/CN=lfiorini.42.fr/"
 
-COPY conf/nginx_1.conf /etc/nginx/nginx.conf
-COPY conf/lfiorini.42.fr.conf /etc/nginx/sites-available/default
+COPY conf/my-nginx.conf /etc/nginx/nginx.conf
+COPY conf/my-default.conf /etc/nginx/sites-available/default
 RUN rm -rf /var/www/
 
 EXPOSE 443
