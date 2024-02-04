@@ -1,0 +1,68 @@
+Error response from daemon: No such image: srcs-nginx:latest
+Error response from daemon: No such image: srcs-mariadb:latest
+Error response from daemon: No such image: srcs-wordpress:latest
+"docker volume rm" requires at least 1 argument.
+See 'docker volume rm --help'.
+
+Usage:  docker volume rm [OPTIONS] VOLUME [VOLUME...]
+
+Remove one or more volumes
+make[1]: [Makefile:61: clean] Error 1 (ignored)
+Error response from daemon: No such image: srcs-nginx:latest
+Error response from daemon: No such image: srcs-mariadb:latest
+Error response from daemon: No such image: srcs-wordpress:latest
+"docker volume rm" requires at least 1 argument.
+See 'docker volume rm --help'.
+
+Usage:  docker volume rm [OPTIONS] VOLUME [VOLUME...]
+
+Remove one or more volumes
+make[1]: [Makefile:61: clean] Error 1 (ignored)
+time="2024-02-04T21:37:37+01:00" level=warning msg="The \"CERTSN\" variable is not set. Defaulting to a blank string."
+ Container nginx  Stopping
+ Container nginx  Stopped
+ Container nginx  Removing
+ Container nginx  Removed
+ Container wordpress  Stopping
+ Container wordpress  Stopped
+ Container wordpress  Removing
+ Container wordpress  Removed
+ Container mariadb  Stopping
+ Container mariadb  Stopped
+ Container mariadb  Removing
+ Container mariadb  Removed
+ Network srcs_inception  Removing
+ Network srcs_inception  Removed
+time="2024-02-04T21:39:23+01:00" level=warning msg="The \"CERTSN\" variable is not set. Defaulting to a blank string."
+ Network srcs_inception  Creating
+ Network srcs_inception  Created
+ Volume "srcs_mariadb"  Creating
+ Volume "srcs_mariadb"  Created
+ Volume "srcs_wordpress"  Creating
+ Volume "srcs_wordpress"  Created
+ Container mariadb  Creating
+ Container mariadb  Created
+ Container wordpress  Creating
+ Container wordpress  Created
+ Container nginx  Creating
+ Container nginx  Created
+ Container mariadb  Starting
+ Container mariadb  Started
+ Container wordpress  Starting
+ Container wordpress  Started
+ Container nginx  Starting
+ Container nginx  Started
+ Container nginx  Stopping
+ Container nginx  Stopped
+ Container nginx  Removing
+ Container nginx  Removed
+ Container wordpress  Stopping
+ Container wordpress  Stopped
+ Container wordpress  Removing
+ Container wordpress  Removed
+ Container mariadb  Stopping
+ Container mariadb  Stopped
+ Container mariadb  Removing
+ Container mariadb  Removed
+ Network srcs_inception  Removing
+ Network srcs_inception  Removed

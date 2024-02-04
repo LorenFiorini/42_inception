@@ -1,0 +1,77 @@
+1,2d0
+< 
+22,26c20,29
+< user = www-data
+< group = www-data
+---
+> user = root
+> group = root
+38a42
+48,51c52,57
+< listen.owner = www-data
+< listen.group = www-data
+---
+> listen.owner = php-fpm
+> listen.group = php-fpm
+52a59
+> 
+65c72,76
+---
+> 
+75,76c86,88
+---
+97a110,111
+116c130
+< pm.max_children = 5
+---
+> pm.max_children = 50
+121c135
+< pm.start_servers = 2
+---
+> pm.start_servers = 8
+126c140
+< pm.min_spare_servers = 1
+---
+> pm.min_spare_servers = 3
+131c145
+< pm.max_spare_servers = 3
+---
+> pm.max_spare_servers = 12
+142c156
+---
+> pm.max_requests = 700
+145c159
+---
+235c249
+---
+241c255
+---
+> pm.status_path = /status
+253c267
+---
+> ping.path = /ping
+262c276
+---
+> access.log = /var/log/$pool.access.log
+281c295
+---
+311c325
+---
+316c330
+---
+321c335,351
+---
+> 
+376,377c406,407
+< 
+---
+> chdir = /var/www/wordpress
+380c410
+---
+383c413
+---
+> catch_workers_output = yes
+439,440c469,470
+---
+> php_admin_value[error_log] = /var/log/fpm-php.www.log
+> php_admin_flag[log_errors] = on
