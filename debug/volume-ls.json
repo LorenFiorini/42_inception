@@ -1,0 +1,24 @@
+{
+	"Availability": "N/A",
+	"Driver": "local",
+	"Group": "N/A",
+	"Labels": "com.docker.compose.project=srcs,com.docker.compose.version=2.24.5,com.docker.compose.volume=mariadb",
+	"Links": "N/A",
+	"Mountpoint": "/var/lib/docker/volumes/srcs_mariadb/_data",
+	"Name": "srcs_mariadb",
+	"Scope": "local",
+	"Size": "N/A",
+	"Status": "N/A"
+}
+{
+	"Availability": "N/A",
+	"Driver": "local",
+	"Group": "N/A",
+	"Labels": "com.docker.compose.project=srcs,com.docker.compose.version=2.24.5,com.docker.compose.volume=wordpress",
+	"Links": "N/A",
+	"Mountpoint": "/var/lib/docker/volumes/srcs_wordpress/_data",
+	"Name": "srcs_wordpress",
+	"Scope": "local",
+	"Size": "N/A",
+	"Status": "N/A"
+}

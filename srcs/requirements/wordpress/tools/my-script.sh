@@ -8,7 +8,7 @@ cd /var/www/wordpress
 if ! sudo -u www-data wp core is-installed --path=/var/www/wordpress; then
 	sudo -u www-data wp core download --path=/var/www/wordpress
 	sudo -u www-data wp config create --dbhost=mariadb --dbname=${DB_NAME} --dbuser=${DB_USER} --dbpass=${DB_PASS} --allow-root --force
-	sudo -u www-data wp core install --url==${WP_URL} --title=lfiorini --admin_user=${ADMIN_USER} --admin_password=${ADMIN_PASS} --admin_email=admin@lfiorini.42.fr
+	sudo -u www-data wp core install --url==${WP_URL} --title=lfiorini --admin_user=${ADMIN_USER} --admin_password=${ADMIN_PASS} --admin_email=${ADMIN_EMAIL} --allow-root
 	sudo -u www-data wp config set HTTP_HOST 'nginx'
 	sudo -u www-data wp config set WP_SITEURL "https://${WP_URL}"
 	sudo -u www-data wp config set WP_HOME "https://${WP_URL}"

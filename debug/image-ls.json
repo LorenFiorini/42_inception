@@ -1,0 +1,39 @@
+{
+	"Containers": "N/A",
+	"CreatedAt": "2024-02-05 00:31:23 +0100 CET",
+	"CreatedSince": "16 minutes ago",
+	"Digest": "\u003cnone\u003e",
+	"ID": "e163bc9da43a",
+	"Repository": "srcs-nginx",
+	"SharedSize": "N/A",
+	"Size": "253MB",
+	"Tag": "latest",
+	"UniqueSize": "N/A",
+	"VirtualSize": "252.5MB"
+}
+{
+	"Containers": "N/A",
+	"CreatedAt": "2024-02-05 00:31:08 +0100 CET",
+	"CreatedSince": "17 minutes ago",
+	"Digest": "\u003cnone\u003e",
+	"ID": "9e9ce3ae34f8",
+	"Repository": "srcs-wordpress",
+	"SharedSize": "N/A",
+	"Size": "329MB",
+	"Tag": "latest",
+	"UniqueSize": "N/A",
+	"VirtualSize": "329.2MB"
+}
+{
+	"Containers": "N/A",
+	"CreatedAt": "2024-02-05 00:30:40 +0100 CET",
+	"CreatedSince": "17 minutes ago",
+	"Digest": "\u003cnone\u003e",
+	"ID": "c7a4ee9a5b4c",
+	"Repository": "srcs-mariadb",
+	"SharedSize": "N/A",
+	"Size": "478MB",
+	"Tag": "latest",
+	"UniqueSize": "N/A",
+	"VirtualSize": "478.1MB"
+}

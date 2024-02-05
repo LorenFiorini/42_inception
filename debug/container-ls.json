@@ -1,0 +1,48 @@
+{
+	"Command": "\"/usr/sbin/nginx -g …\"",
+	"CreatedAt": "2024-02-05 00:31:24 +0100 CET",
+	"ID": "1ce8869206b0",
+	"Image": "srcs-nginx",
+	"Labels": "com.docker.compose.project.config_files=/home/lfiorini/42/inception/srcs/docker-compose.yml,com.docker.compose.project.working_dir=/home/lfiorini/42/inception/srcs,com.docker.compose.version=2.24.5,com.docker.compose.config-hash=d182dd4aa9a59306e630f689370617e53e72f85869e09d1cc2729ff35461560d,com.docker.compose.oneoff=False,com.docker.compose.project=srcs,com.docker.compose.service=nginx,com.docker.compose.container-number=1,com.docker.compose.depends_on=wordpress:service_started:false,com.docker.compose.image=sha256:e163bc9da43aa5e72526a440b050eea38a3e2f4c2e93d676e45a520b7c3ef19e",
+	"LocalVolumes": "1",
+	"Mounts": "srcs_wordpress",
+	"Names": "nginx",
+	"Networks": "srcs_inception",
+	"Ports": "0.0.0.0:443-\u003e443/tcp, :::443-\u003e443/tcp",
+	"RunningFor": "17 minutes ago",
+	"Size": "0B",
+	"State": "running",
+	"Status": "Up 17 minutes"
+}
+{
+	"Command": "\"/my-script.sh\"",
+	"CreatedAt": "2024-02-05 00:31:24 +0100 CET",
+	"ID": "cc25c866ee54",
+	"Image": "srcs-wordpress",
+	"Labels": "com.docker.compose.project.working_dir=/home/lfiorini/42/inception/srcs,com.docker.compose.version=2.24.5,com.docker.compose.config-hash=77d48625ec38e6d77af298e645cc8f8b35c0193b2db9c8514f5cee9071185716,com.docker.compose.container-number=1,com.docker.compose.project.config_files=/home/lfiorini/42/inception/srcs/docker-compose.yml,com.docker.compose.project=srcs,com.docker.compose.service=wordpress,com.docker.compose.depends_on=mariadb:service_started:false,com.docker.compose.image=sha256:9e9ce3ae34f85816136932d5192375f2c1f0c7d255ea548f2716826576377578,com.docker.compose.oneoff=False",
+	"LocalVolumes": "1",
+	"Mounts": "srcs_wordpress",
+	"Names": "wordpress",
+	"Networks": "srcs_inception",
+	"Ports": "9000/tcp",
+	"RunningFor": "17 minutes ago",
+	"Size": "0B",
+	"State": "running",
+	"Status": "Up 17 minutes"
+}
+{
+	"Command": "\"/usr/local/bin/my-s…\"",
+	"CreatedAt": "2024-02-05 00:31:23 +0100 CET",
+	"ID": "fa6b8e999842",
+	"Image": "srcs-mariadb",
+	"Labels": "com.docker.compose.image=sha256:c7a4ee9a5b4c47351db02a6eca2588956e6b66e7e1e03e6f9deeca2a43c0fcbd,com.docker.compose.oneoff=False,com.docker.compose.project.working_dir=/home/lfiorini/42/inception/srcs,com.docker.compose.version=2.24.5,com.docker.compose.project.config_files=/home/lfiorini/42/inception/srcs/docker-compose.yml,com.docker.compose.service=mariadb,com.docker.compose.config-hash=fccc9745a78ea5cb2709068ebf4935f45ce865bfe2807cb7a862112325a3a474,com.docker.compose.container-number=1,com.docker.compose.depends_on=,com.docker.compose.project=srcs",
+	"LocalVolumes": "1",
+	"Mounts": "srcs_mariadb",
+	"Names": "mariadb",
+	"Networks": "srcs_inception",
+	"Ports": "3306/tcp",
+	"RunningFor": "17 minutes ago",
+	"Size": "0B",
+	"State": "running",
+	"Status": "Up 17 minutes"
+}

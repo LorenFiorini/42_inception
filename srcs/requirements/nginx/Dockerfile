@@ -19,11 +19,13 @@ RUN rm -rf /var/lib/apt/lists/*
 RUN openssl req -newkey rsa:4096 -x509 -sha256 -days 365 -nodes \
        -out /etc/ssl/certs/lfiorini.42.fr.crt \
        -keyout /etc/ssl/private/lfiorini.42.fr.key \
-       -subj "/C=DE/ST=Baden-Wuerttemberg/L=Heilbronn/O=42Heilbronn/OU=student/CN=lfiorini.42.fr/"
+       -subj "/C=DE/ST=Baden-Wuerttemberg/L=Heilbronn/O=42Heilbronn/OU=student/CN=lfiorini.42.fr/UID=lfiorini"
 
 COPY conf/my-nginx.conf /etc/nginx/nginx.conf
 COPY conf/my-default.conf /etc/nginx/sites-available/default
-RUN rm -rf /var/www/
+
+RUN chmod 755 /var/www
+# RUN rm -rf /var/www/
 
 EXPOSE 443
 

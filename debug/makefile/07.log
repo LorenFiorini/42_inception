@@ -66,3 +66,31 @@ time="2024-02-04T21:39:23+01:00" level=warning msg="The \"CERTSN\" variable is n
  Container mariadb  Removed
  Network srcs_inception  Removing
  Network srcs_inception  Removed
+ Container nginx  Stopping
+ Container nginx  Stopped
+ Container nginx  Removing
+ Container nginx  Removed
+ Container wordpress  Stopping
+ Container wordpress  Stopped
+ Container wordpress  Removing
+ Container wordpress  Removed
+ Container mariadb  Stopping
+ Container mariadb  Stopped
+ Container mariadb  Removing
+ Container mariadb  Removed
+ Network srcs_inception  Removing
+ Network srcs_inception  Removed
+ Container nginx  Stopping
+ Container nginx  Stopped
+ Container nginx  Removing
+ Container nginx  Removed
+ Container wordpress  Stopping
+ Container wordpress  Stopped
+ Container wordpress  Removing
+ Container wordpress  Removed
+ Container mariadb  Stopping
+ Container mariadb  Stopped
+ Container mariadb  Removing
+ Container mariadb  Removed
+ Network srcs_inception  Removing
+ Network srcs_inception  Removed
